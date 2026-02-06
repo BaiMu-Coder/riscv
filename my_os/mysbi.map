@@ -1,0 +1,94 @@
+
+内存配置
+
+名称           来源             长度             属性
+*default*        0x0000000000000000 0xffffffffffffffff
+
+链结器命令稿和内存映射
+
+                0x0000000080000000                . = 0x80000000
+
+.text.boot      0x0000000080000000       0x20
+ *(.text.boot)
+ .text.boot     0x0000000080000000       0x20 build/sbi/sbi_boot.o
+                0x0000000080000000                _start
+
+.text           0x0000000080000020      0x1b4
+ *(.text)
+ .text          0x0000000080000020       0x18 build/sbi/sbi_main.o
+                0x0000000080000020                sbi_main
+ .text          0x0000000080000038        0x0 build/sbi/sbi_boot.o
+ .text          0x0000000080000038      0x19c build/common/uart.o
+                0x0000000080000038                uart_init
+                0x0000000080000110                uart_send
+                0x0000000080000174                uart_send_string
+
+.rodata         0x00000000800001d8       0x12
+ *(.rodata)
+ .rodata        0x00000000800001d8       0x12 build/sbi/sbi_main.o
+
+.data           0x0000000080001000     0x1000
+ *(.data)
+ .data          0x0000000080001000        0x0 build/sbi/sbi_main.o
+ .data          0x0000000080001000     0x1000 build/sbi/sbi_boot.o
+                0x0000000080001000                stacks_start
+ .data          0x0000000080002000        0x0 build/common/uart.o
+                0x0000000080002000                . = ALIGN (0x8)
+                0x0000000080002000                bss_begin = .
+
+.bss            0x0000000080002000        0x0
+ *(.bss*)
+ .bss           0x0000000080002000        0x0 build/sbi/sbi_main.o
+ .bss           0x0000000080002000        0x0 build/sbi/sbi_boot.o
+ .bss           0x0000000080002000        0x0 build/common/uart.o
+                0x0000000080002000                bss_end = .
+LOAD build/sbi/sbi_main.o
+LOAD build/sbi/sbi_boot.o
+LOAD build/common/uart.o
+OUTPUT(build/sbi/mysbi.elf elf64-littleriscv)
+
+.debug_info     0x0000000000000000      0x31f
+ .debug_info    0x0000000000000000       0x53 build/sbi/sbi_main.o
+ .debug_info    0x0000000000000053       0x2e build/sbi/sbi_boot.o
+ .debug_info    0x0000000000000081      0x29e build/common/uart.o
+
+.debug_abbrev   0x0000000000000000      0x120
+ .debug_abbrev  0x0000000000000000       0x39 build/sbi/sbi_main.o
+ .debug_abbrev  0x0000000000000039       0x14 build/sbi/sbi_boot.o
+ .debug_abbrev  0x000000000000004d       0xd3 build/common/uart.o
+
+.debug_aranges  0x0000000000000000       0x90
+ .debug_aranges
+                0x0000000000000000       0x30 build/sbi/sbi_main.o
+ .debug_aranges
+                0x0000000000000030       0x30 build/sbi/sbi_boot.o
+ .debug_aranges
+                0x0000000000000060       0x30 build/common/uart.o
+
+.debug_line     0x0000000000000000      0x262
+ .debug_line    0x0000000000000000       0x55 build/sbi/sbi_main.o
+ .debug_line    0x0000000000000055       0x5f build/sbi/sbi_boot.o
+ .debug_line    0x00000000000000b4      0x1ae build/common/uart.o
+
+.debug_str      0x0000000000000000      0x118
+ .debug_str     0x0000000000000000       0xa2 build/sbi/sbi_main.o
+ .debug_str     0x00000000000000a2       0x1b build/sbi/sbi_boot.o
+                                         0x46 (松开之前的大小)
+ .debug_str     0x00000000000000bd       0x5b build/common/uart.o
+                                         0xf7 (松开之前的大小)
+
+.comment        0x0000000000000000       0x29
+ .comment       0x0000000000000000       0x29 build/sbi/sbi_main.o
+                                         0x2a (松开之前的大小)
+ .comment       0x0000000000000029       0x2a build/common/uart.o
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/sbi/sbi_main.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/common/uart.o
+
+.debug_frame    0x0000000000000000       0xb0
+ .debug_frame   0x0000000000000000       0x30 build/sbi/sbi_main.o
+ .debug_frame   0x0000000000000030       0x80 build/common/uart.o

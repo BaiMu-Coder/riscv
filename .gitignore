@@ -24,7 +24,6 @@
 *.swo
 
 # 编译器、构建系统生成的文件
-Makefile
 Makefile.*
 CMakeFiles/
 CMakeCache.txt
@@ -99,13 +98,7 @@ build/
 Build/
 build-*/
 
-# CMake generated files
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-install_manifest.txt 
-compile_commands.json
+
 
 # Temporary files
 *.tmp 
