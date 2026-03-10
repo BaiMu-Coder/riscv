@@ -8,6 +8,8 @@ _start:
 	add sp, sp, t0
 	li a0, 48
     call uart_send;
+	
+	/* 回车换行的作用 */
 	li a0, 10
     call uart_send;
 	/* goto C */

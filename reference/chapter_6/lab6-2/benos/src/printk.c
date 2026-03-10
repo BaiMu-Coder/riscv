@@ -10,7 +10,8 @@ static char print_buf[CONSOLE_PRINT_BUFFER_SIZE];
 #define LOG_BUF_LEN (1 << CONFIG_LOG_BUF_SHIFT)
 static char log_buf[LOG_BUF_LEN];
 
-enum printk_status {
+enum printk_status
+{
 	PRINTK_STATUS_DOWN,
 	PRINTK_STATUS_READY,
 };
@@ -19,29 +20,30 @@ static enum printk_status g_printk_status = PRINTK_STATUS_DOWN;
 static char *g_record = log_buf;
 static unsigned long g_record_len;
 
-#define ZEROPAD	1		/* pad with zero */
-#define SIGN	2		/* unsigned/signed long */
-#define PLUS	4		/* show plus */
-#define SPACE	8		/* space if plus */
-#define LEFT	16		/* left justified */
-#define SPECIAL	32		/* 0x */
-#define SMALL	64		/* use 'abcdef' instead of 'ABCDEF' */
+#define ZEROPAD 1  /* pad with zero */
+#define SIGN 2	   /* unsigned/signed long */
+#define PLUS 4	   /* show plus */
+#define SPACE 8	   /* space if plus */
+#define LEFT 16	   /* left justified */
+#define SPECIAL 32 /* 0x */
+#define SMALL 64   /* use 'abcdef' instead of 'ABCDEF' */
 
 #define is_digit(c) ((c) >= '0' && (c) <= '9')
 
-#define do_div(n, base) ({					\
-	unsigned int __base = (base);				\
-	unsigned int  __rem;						\
-	__rem = ((unsigned long)(n)) % __base;			\
-	(n) = ((unsigned long)(n)) / __base;				\
-	__rem;							\
+#define do_div(n, base) ({                 \
+	unsigned int __base = (base);          \
+	unsigned int __rem;                    \
+	__rem = ((unsigned long)(n)) % __base; \
+	(n) = ((unsigned long)(n)) / __base;   \
+	__rem;                                 \
 })
 
-static const char *scan_number(const char *string, int *number)
+static const char *scan_number(const char *string, int *number) // 字符串转整数 stoi
 {
 	int tmp = 0;
 
-	while (is_digit(*string)) {
+	while (is_digit(*string))
+	{
 		tmp *= 10;
 		tmp += *(string++) - '0';
 	}
@@ -50,8 +52,7 @@ static const char *scan_number(const char *string, int *number)
 	return string;
 }
 
-static char *number(char *str, unsigned long num, int base, int size, int precision
-	, int type)
+static char *number(char *str, unsigned long num, int base, int size, int precision, int type)
 {
 	char c, sign = 0, tmp[128];
 	long snum;
@@ -68,21 +69,28 @@ static char *number(char *str, unsigned long num, int base, int size, int precis
 
 	c = (type & ZEROPAD) ? '0' : ' ';
 
-	if (type & SIGN) {
+	if (type & SIGN)
+	{
 		snum = (long)num;
-		if (snum < 0) {
+		if (snum < 0)
+		{
 			sign = '-';
 			num = -snum;
-		} else if (type & PLUS) {
+		}
+		else if (type & PLUS)
+		{
 			sign = '+';
 			size--;
-		} else if (type & SPACE) {
+		}
+		else if (type & SPACE)
+		{
 			sign = ' ';
 			size--;
 		}
 	}
 
-	if (type & SPECIAL) {
+	if (type & SPECIAL)
+	{
 		if (base == 16)
 			size -= 2;
 		else if (base == 8)
@@ -98,16 +106,18 @@ static char *number(char *str, unsigned long num, int base, int size, int precis
 	if (i > precision)
 		precision = i;
 	size -= precision;
-	if (!(type&(ZEROPAD+LEFT)))
+	if (!(type & (ZEROPAD + LEFT)))
 		while (size-- > 0)
 			*str++ = ' ';
 	if (sign)
 		*str++ = sign;
 
-	if (type & SPECIAL) {
+	if (type & SPECIAL)
+	{
 		if (base == 8)
 			*str++ = '0';
-		else if (base == 16) {
+		else if (base == 16)
+		{
 			*str++ = '0';
 			*str++ = digits[33];
 		}
@@ -142,14 +152,14 @@ static char *number(char *str, unsigned long num, int base, int size, int precis
  *  ll: long long, unsigned long long
  */
 int myprintf(char *string, unsigned int size,
-		const char *fmt, va_list arg)
+			 const char *fmt, va_list arg)
 {
-	char *pos;
-	int flags;
+	char *pos;  
+	int flags; //保存标志位:对齐、填充方式
 	int field_width; /* width of output field */
-	int precision;
-	int qualifier;
-	char *ip;
+	int precision;   //控制浮点数、字符串的精度
+	int qualifier;  //用于指定数据类型的长度
+	char *ip;       
 	char *s;
 	int i;
 	int len;
@@ -158,17 +168,20 @@ int myprintf(char *string, unsigned int size,
 
 	pos = string;
 
-	for (; *fmt; fmt++) {
-		if (*fmt != '%') {
+	for (; *fmt; fmt++)
+	{
+		if (*fmt != '%')
+		{
 			*pos++ = *fmt;
 			continue;
 		}
 
-		/* process flags */
+		/* process flags  解析格式标志*/
 		flags = 0;
-repeat:
+	repeat:
 		++fmt; /* skip first % */
-		switch (*fmt) {
+		switch (*fmt)
+		{
 		case '-':
 			flags |= LEFT;
 			goto repeat;
@@ -187,20 +200,27 @@ repeat:
 		}
 
 		/* 最小宽度（width）用于控制显示字段的宽度 */
+		// 如果下一个字符是数字，说明是指定了字段宽度。
+		// 如果是*，则从 va_list 中获取字段宽度，并且处理可能的负值。
 		field_width = -1;
-		if (is_digit(*fmt)) {
+		if (is_digit(*fmt))
+		{
 			fmt = scan_number(fmt, &field_width);
-		} else if (*fmt == '*') {
-			field_width = va_arg(arg, int);
-			if (field_width < 0) {
+		}
+		else if (*fmt == '*')
+		{
+			field_width = va_arg(arg, int);   //这里从可变参数列表中提取出一个 int 类型的值，将它赋给 field_width。这意味着 * 用来动态地指定字段宽度，值是从 arg 中获取的。
+			if (field_width < 0)
+			{
 				field_width = -field_width;
 				flags |= LEFT;
 			}
 		}
 
-		/* 精度（.precision）用于指定输出精度 */
+		/* 精度（.precision）用于指定输出精度 */   //printf("%.2f", 3.14159);
 		precision = -1;
-		if (*fmt == '.') {
+		if (*fmt == '.')
+		{
 			++fmt;
 			if (is_digit(*fmt))
 				fmt = scan_number(fmt, &precision);
@@ -215,17 +235,20 @@ repeat:
 		 * 数据类型长度
 		 */
 		qualifier = -1;
-		if (*fmt == 'h' || *fmt == 'l' || *fmt == 'L') {
+		if (*fmt == 'h' || *fmt == 'l' || *fmt == 'L')
+		{
 			qualifier = *fmt;
 			++fmt;
 
-			if (qualifier == 'l' && *fmt == 'l') {
+			if (qualifier == 'l' && *fmt == 'l')
+			{
 				qualifier = 'L';
 				++fmt;
 			}
 		}
 
-		switch (*fmt) {
+		switch (*fmt)
+		{
 		/* 输出字符型*/
 		case 'c':
 			if (!(flags & LEFT))
@@ -270,13 +293,14 @@ repeat:
 
 		/* 输出类型输出指针*/
 		case 'p':
-			if (field_width == -1) {
+			if (field_width == -1)
+			{
 				field_width = 2 * sizeof(void *);
 				flags |= ZEROPAD;
 			}
 			pos = number(pos,
-				(unsigned long)va_arg(arg, void *),
-				16, field_width, precision, flags);
+						 (unsigned long)va_arg(arg, void *),
+						 16, field_width, precision, flags);
 			continue;
 
 		/* 以八进制表示的整数*/
@@ -308,22 +332,29 @@ repeat:
 			break;
 		}
 
-		if (qualifier == 'L') {
+		if (qualifier == 'L')
+		{
 			if (flags & SIGN)
 				num = va_arg(arg, long);
 			else
 				num = va_arg(arg, long);
-		} else if (qualifier == 'h') {
+		}
+		else if (qualifier == 'h')
+		{
 			if (flags & SIGN)
 				num = (short)va_arg(arg, int);
 			else
 				num = (unsigned short)va_arg(arg, unsigned int);
-		} else if (qualifier == 'l') {
+		}
+		else if (qualifier == 'l')
+		{
 			if (flags & SIGN)
 				num = va_arg(arg, long);
 			else
 				num = va_arg(arg, unsigned long);
-		} else {
+		}
+		else
+		{
 			if (flags & SIGN)
 				num = (int)va_arg(arg, int);
 			else
@@ -355,12 +386,13 @@ int printk(const char *fmt, ...)
 	int len;
 	int i;
 
-	va_start(arg, fmt);
+	va_start(arg, fmt); // 初始化arg，使其指向边长参数列表的开始位置。 fmt 是 printk 的第一个参数，表示格式字符串。
 	len = myprintf(print_buf, sizeof(print_buf), fmt, arg);
-	va_end(arg);
+	va_end(arg); // 用来结束对变长参数列表的访问，释放 arg 占用的资源。
 
 	/* record it into logbuffer*/
-	if (g_printk_status == PRINTK_STATUS_DOWN) {
+	if (g_printk_status == PRINTK_STATUS_DOWN)
+	{
 		memcpy(g_record, print_buf, len);
 		g_record = log_buf + len;
 		g_record_len += len;
@@ -368,7 +400,8 @@ int printk(const char *fmt, ...)
 		return 0;
 	}
 
-	for (i = 0; i < len; i++) {
+	for (i = 0; i < len; i++)
+	{
 		putchar(print_buf[i]);
 		if (i > sizeof(print_buf))
 			break;

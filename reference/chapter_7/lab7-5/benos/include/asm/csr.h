@@ -19,6 +19,11 @@
  * 下面这句话会在预编译阶段变成：
  *  asm volatile("csrr %0, " "reg" : "=r" (__val)); __val; });
  */
+
+
+ //读写系统寄存器（csr寄存器）的宏
+ //register关键字告诉编译器此变量尽量存储在寄存器中
+ //csrr读CSR的值
 #define read_csr(csr)						\
 ({								\
 	register unsigned long __v;				\
@@ -28,6 +33,8 @@
 	__v;							\
 })
 
+
+//csrw写CSR的值    K:5位无符号立即数
 #define write_csr(csr, val)					\
 ({								\
 	unsigned long __v = (unsigned long)(val);		\

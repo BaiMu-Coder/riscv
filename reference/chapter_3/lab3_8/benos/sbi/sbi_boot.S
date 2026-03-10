@@ -18,3 +18,4 @@ _start:
 .global stacks_start
 stacks_start:
 	.skip 4096
+# .skip 指令是一个汇编指令，用于在程序中为数据或栈分配空间。它的作用是跳过指定字节数的空间，通常用于分配未初始化的内存空间。

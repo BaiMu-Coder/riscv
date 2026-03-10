@@ -1,6 +1,8 @@
 #ifndef _ASM_RISCV_CSR_H
 #define _ASM_RISCV_CSR_H
 
+
+// 该宏将 fieldval 的值插入到 val 中指定的位置 which 上。
 #define INSERT_FIELD(val, which, fieldval) \
 	(((val) & ~(which)) | ((fieldval) * ((which) & ~((which)-1))))
 

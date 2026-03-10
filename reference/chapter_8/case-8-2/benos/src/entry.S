@@ -1,6 +1,8 @@
 #include "asm/asm-offsets.h"
 #include "asm/csr.h"
 
+// 这部分定义了一个名为 kernel_entry 的宏。宏是一段可以重复使用的汇编代码模板，
+// 在汇编代码中，可以通过 .macro 来定义一个宏，使用 .endm 来结束宏的定义。
 .macro kernel_entry
 	addi sp, sp, -(PT_SIZE)
 
@@ -114,7 +116,7 @@ do_exception_vector:
 
 	mv a0, sp /* pt_regs */
 	mv a1, s4
-	tail do_exception
+	tail do_exception   /* 尾调用和普通函数调用的差别就是不会自动设置ra，可以手动设置ra，让函数自己跳回来 */
 
 ret_from_exception:
 

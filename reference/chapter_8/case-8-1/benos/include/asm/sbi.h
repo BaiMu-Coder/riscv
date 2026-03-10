@@ -4,10 +4,22 @@
 /*
  * SBI提供timer服务
  */
+//表示不同的SBI服务
 #define SBI_SET_TIMER 0
+//允许设置一个定时器。
 #define SBI_CONSOLE_PUTCHAR 0x1
+//允许通过 SBI 向控制台输出字符。
 #define SBI_CONSOLE_GETCHAR 0x2
+//允许通过 SBI 从控制台获取字符。
 
+
+// 这个宏 SBI_CALL 是用来执行一个 ecall（环境调用），即让当前的程序陷入更高特权级别（如从用户模式进入内核模式，或者从内核模式进入机器模式）并传递一些参数。
+// 使用汇编语法将函数参数传递给寄存器 a0、a1、a2 和 a7，这四个寄存器分别用于传递参数和系统调用的编号。   
+// 语法： asm ("a0")的作用是 表示告诉编译器该变量 a0 应该与 RISC-V 汇编指令中的寄存器 a0 进行关联。
+
+// a7 用来保存系统调用的编号（which），它在这里代表不同的 SBI 服务。
+// asm volatile ("ecall") 执行一个 ecall 指令，触发从当前模式到机器模式的切换。
+// 通过 ecall 后，返回的值（通常存放在 a0 中）会作为宏的结果返回。
 #define SBI_CALL(which, arg0, arg1, arg2) ({			\
 	register unsigned long a0 asm ("a0") = (unsigned long)(arg0);	\
 	register unsigned long a1 asm ("a1") = (unsigned long)(arg1);	\
@@ -19,6 +31,13 @@
 		      : "memory");				\
 	a0;							\
 })
+
+// ecall 指令的参数：
+// a7 寄存器：a7 用来存储系统调用的编号，决定了要执行的系统调用的种类（例如设置定时器、输出字符等）。
+// a0、a1、a2：这些寄存器用于传递实际的参数给系统调用。例如，a0 存储第一个参数，a1 存储第二个参数，依此类推。
+// 返回值：ecall 执行后，返回的值（如系统调用的执行结果）会存储在 a0 寄存器中。
+
+
 
 /* 
  * 陷入到M模式，调用M模式提供的服务。
@@ -40,7 +59,7 @@ static inline void sbi_putchar(char c)
 
 static inline void sbi_put_string(char *str)
 {
-	int i;
+	int i; 
 
 	for (i = 0; str[i] != '\0'; i++)
 		sbi_putchar((char) str[i]);

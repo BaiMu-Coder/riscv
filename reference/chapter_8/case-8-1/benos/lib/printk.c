@@ -338,6 +338,10 @@ repeat:
 
 static void (*putchar_fn)(char c);
 
+
+// 设置打印函数（putchar_fn），  打印也是通过串口uart来的
+// 将日志缓冲区中的内容逐个字符地通过该打印函数输出，
+// 最后重置日志缓冲区，以便为新的日志记录做准备。
 void init_printk_done(void (*fn)(char c))
 {
 	unsigned long i;

@@ -9,6 +9,7 @@
 .global sbi_exception_vector
 sbi_exception_vector:
 	/* 从mscratch获取M模式的sp，把S模式的SP保存到mscratch*/
+	//原子的交换 mscratch 和 sp 寄存器的值
 	csrrw sp, mscratch, sp
 
 	addi sp, sp, -(PT_SIZE)
@@ -65,7 +66,7 @@ sbi_exception_vector:
 	mv a0, sp /* sbi_trap_regs */
 	call sbi_trap_handler
 
-	/* save context*/
+	/* 恢复异常上下文*/
 	ld t0, PT_MSTATUS(sp)
 	csrw mstatus, t0
 

@@ -103,6 +103,8 @@ static void my_memcpy_asm_test2(unsigned long src, unsigned long dst,
 			: "memory");
 }
 
+
+// ##是c语言的标记粘贴运算符，将ops参数与函数名连接在一起，生成一个新的函数名
 #define MY_OPS(ops, asm_ops) \
 static inline void my_asm_##ops(unsigned long mask, void *p) \
 {                                                     \

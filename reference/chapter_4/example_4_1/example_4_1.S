@@ -6,7 +6,9 @@
 data:
 	.word 1, 2, 3, 4, 5, 6, 7, 8, 9, -1
 
-	.text
+
+
+	.section   .text
 	.align	2
 
 .global	main

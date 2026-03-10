@@ -47,6 +47,8 @@ static void sbi_trap_error(struct sbi_trap_regs *regs, const char *msg, int rc)
 	sbi_panic();
 }
 
+
+
 static int sbi_ecall_handle(unsigned int id, struct sbi_trap_regs *regs)
 {
 	int ret = 0;
@@ -59,20 +61,28 @@ static int sbi_ecall_handle(unsigned int id, struct sbi_trap_regs *regs)
 	}
 
 	/* 系统调用返回的是系统调用指令（例如ECALL指令）的下一条指令 */
+	// mepc寄存器记录发生异常的指令地址
 	if (!ret)
 		regs->mepc += 4;
 
 	return ret;
 }
 
+
+
+
+// 这个 sbi_trap_handler(struct sbi_trap_regs *regs) 就是 SBI 在 M 模式下的“统一陷入分发器（trap dispatcher）”：
+// S 模式一旦通过 ecall 进来（或发生其它陷入/异常），入口汇编先把现场寄存器保存成一个 regs，然后把 regs 指针丢给这个 C 函数，
+// 让它根据陷入原因（mcause）决定接下来怎么处理。
 void sbi_trap_handler(struct sbi_trap_regs *regs)
 {
 	unsigned long mcause = read_csr(mcause);
-	unsigned long ecall_id = regs->a7;
+	unsigned long ecall_id = regs->a7;   //在 SBI 约定里，a7 通常放 SBI Extension ID（或者你项目里叫 ecall_id），用于区分你要调用哪一类 SBI 服务。
 	int rc = SBI_ENOTSUPP;
 	const char *msg = "trap handler failed";
 
 	switch (mcause) {
+	//只要是 S 模式发的 ecall，就交给 sbi_ecall_handler() 去做真正的 SBI 调用分发/实现
 	case CAUSE_SUPERVISOR_ECALL:
 		rc = sbi_ecall_handle(ecall_id, regs);
 		msg = "ecall handler failed";
@@ -86,7 +96,7 @@ void sbi_trap_handler(struct sbi_trap_regs *regs)
 	}
 }
 
-extern void sbi_exception_vector(void);
+extern void sbi_exception_vector(void);  //异常向量表的基地址   sbi_entry.S文件里面定义
 
 void sbi_trap_init(void)
 {

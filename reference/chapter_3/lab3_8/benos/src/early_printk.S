@@ -4,6 +4,7 @@
 .globl __init_uart
 __init_uart:
 	/* disable interrupt */
+	// la 指令将 指定的标签的值 加载到目标寄存器中
 	la t0, UART_IER
 	sb x0, (t0)
 
@@ -31,6 +32,8 @@ __init_uart:
 
 	ret
 
+
+//打印一个字符
 .global put_uart
 put_uart:
 .loop:

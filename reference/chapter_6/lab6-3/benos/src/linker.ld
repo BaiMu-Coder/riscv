@@ -22,6 +22,7 @@ SECTIONS
         * text代码段
 	* 假设代码段是在ROM中(LMA), 这时候运行地址VMA 不等于 加载地址LMA
         */
+        /* AT(TEXT_ROM) 指定了 .text段的加载地址为TEXT_ROM */
 	. = ALIGN(8);
 	_text = .;
 	.text : AT(TEXT_ROM)

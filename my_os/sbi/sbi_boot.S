@@ -5,7 +5,7 @@
 _start:
 //关闭M模式的中断
 li t0, MIE_SSIE|MIE_MSIE|MIE_STIE|MIE_MTIE|MIE_SEIE|MIE_MEIE
-csrs mie , t0
+csrc mie , t0
 
 
 //开栈区
