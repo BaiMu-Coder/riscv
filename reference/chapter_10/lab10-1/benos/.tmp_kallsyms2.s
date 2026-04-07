@@ -1,0 +1,814 @@
+# 1 ".tmp_kallsyms2.S"
+# 1 "/home/baimu/桌面/github/riscv/reference/chapter_10/lab10-1/benos//"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "/usr/riscv64-linux-gnu/include/stdc-predef.h" 1 3
+# 1 "<command-line>" 2
+# 1 ".tmp_kallsyms2.S"
+# 1 "include/asm/types.h" 1
+# 2 ".tmp_kallsyms2.S" 2
+
+
+
+
+
+
+
+ .section .rodata, "a"
+.globl kallsyms_addresses
+ .align 8
+kallsyms_addresses:
+ .quad _text + 0
+ .quad _text + 0
+ .quad _text + 0
+ .quad _text + 0x2c
+ .quad _text + 0x8c
+ .quad _text + 0xb8
+ .quad _text + 0x118
+ .quad _text + 0x148
+ .quad _text + 0x178
+ .quad _text + 0x1a8
+ .quad _text + 0x1dc
+ .quad _text + 0x210
+ .quad _text + 0x244
+ .quad _text + 0x348
+ .quad _text + 0x484
+ .quad _text + 0x5bc
+ .quad _text + 0x600
+ .quad _text + 0x6e0
+ .quad _text + 0x7a4
+ .quad _text + 0x7e8
+ .quad _text + 0x834
+ .quad _text + 0x8d8
+ .quad _text + 0xa00
+ .quad _text + 0xbdc
+ .quad _text + 0xc70
+ .quad _text + 0xc90
+ .quad _text + 0xe94
+ .quad _text + 0xf10
+ .quad _text + 0xf4c
+ .quad _text + 0xf88
+ .quad _text + 0xfc4
+ .quad _text + 0x1000
+ .quad _text + 0x103c
+ .quad _text + 0x1078
+ .quad _text + 0x10b4
+ .quad _text + 0x10f0
+ .quad _text + 0x112c
+ .quad _text + 0x1168
+ .quad _text + 0x11a4
+ .quad _text + 0x11e0
+ .quad _text + 0x121c
+ .quad _text + 0x12dc
+ .quad _text + 0x1354
+ .quad _text + 0x13b4
+ .quad _text + 0x140c
+ .quad _text + 0x1478
+ .quad _text + 0x14c8
+ .quad _text + 0x15a8
+ .quad _text + 0x15f8
+ .quad _text + 0x1638
+ .quad _text + 0x16fc
+ .quad _text + 0x179c
+ .quad _text + 0x17e8
+ .quad _text + 0x1820
+ .quad _text + 0x186c
+ .quad _text + 0x1964
+ .quad _text + 0x19ac
+ .quad _text + 0x19dc
+ .quad _text + 0x1a44
+ .quad _text + 0x1ba8
+ .quad _text + 0x1c6c
+ .quad _text + 0x1d50
+ .quad _text + 0x1d84
+ .quad _text + 0x1db4
+ .quad _text + 0x1e04
+ .quad _text + 0x1e2c
+ .quad _text + 0x1e9c
+ .quad _text + 0x1ef8
+ .quad _text + 0x1f64
+ .quad _text + 0x2114
+ .quad _text + 0x216c
+ .quad _text + 0x21a8
+ .quad _text + 0x2214
+ .quad _text + 0x2240
+ .quad _text + 0x233c
+ .quad _text + 0x23a8
+ .quad _text + 0x2414
+ .quad _text + 0x245c
+ .quad _text + 0x24a4
+ .quad _text + 0x24ec
+ .quad _text + 0x2594
+ .quad _text + 0x25d8
+ .quad _text + 0x2638
+ .quad _text + 0x2700
+ .quad _text + 0x2818
+ .quad _text + 0x2840
+ .quad _text + 0x2868
+ .quad _text + 0x28d4
+ .quad _text + 0x2930
+ .quad _text + 0x295c
+ .quad _text + 0x2a90
+ .quad _text + 0x2afc
+ .quad _text + 0x2be4
+ .quad _text + 0x2be8
+ .quad _text + 0x2bfc
+ .quad _text + 0x2cbc
+ .quad _text + 0x2cbc
+ .quad _text + 0x2d4c
+ .quad _text + 0x2d58
+ .quad _text + 0x2d80
+ .quad _text + 0x2d88
+ .quad _text + 0x2dc0
+ .quad _text + 0x2e08
+ .quad _text + 0x2e4c
+ .quad _text + 0x2e58
+ .quad _text + 0x2e7c
+ .quad _text + 0x2e94
+ .quad _text + 0x2eac
+ .quad _text + 0x2ec4
+ .quad _text + 0x2edc
+ .quad _text + 0x2ef8
+ .quad _text + 0x2f10
+ .quad _text + 0x2f28
+ .quad _text + 0x2f30
+ .quad _text + 0x2f38
+ .quad _text + 0x2f40
+ .quad _text + 0x2f68
+ .quad _text + 0x2f98
+ .quad _text + 0x2ff0
+ .quad _text + 0x2ff0
+ .quad _text + 0x3010
+ .quad _text + 0x3018
+ .quad _text + 0x3034
+ .quad _text + 0x30d8
+ .quad _text + 0x34d8
+ .quad _text + 0x3c84
+ .quad _text + 0x3d3c
+ .quad _text + 0x3e9c
+ .quad _text + 0x3ef0
+ .quad _text + 0x3fc0
+
+.globl kallsyms_num_syms
+ .align 8
+kallsyms_num_syms:
+ .quad 130
+
+.globl kallsyms_names
+ .align 8
+kallsyms_names:
+ .byte 0x03, 0xd6, 0xbf, 0x01
+ .byte 0x03, 0x54, 0xd4, 0xa0
+ .byte 0x02, 0x8e, 0xa0
+ .byte 0x06, 0x97, 0xe1, 0xca, 0x0e, 0xbf, 0x70
+ .byte 0x03, 0xd6, 0xca, 0x01
+ .byte 0x06, 0x97, 0xe1, 0xfe, 0x0e, 0xca, 0x70
+ .byte 0x02, 0x4e, 0xbf
+ .byte 0x02, 0x4e, 0xca
+ .byte 0x02, 0x4e, 0xfe
+ .byte 0x02, 0x45, 0xbf
+ .byte 0x02, 0x45, 0xca
+ .byte 0x02, 0x45, 0xfe
+ .byte 0x02, 0x33, 0xfe
+ .byte 0x02, 0x33, 0xca
+ .byte 0x06, 0xb2, 0x63, 0x3d, 0xd7, 0xbf, 0x30
+ .byte 0x0b, 0xfe, 0xf0, 0x6c, 0xea, 0x70, 0x67, 0x74, 0xc1, 0xcd, 0xf4, 0x8a
+ .byte 0x09, 0x3b, 0x5f, 0x69, 0x64, 0xc7, 0xde, 0x63, 0xf4, 0x30
+ .byte 0x07, 0x3b, 0xbc, 0x6d, 0x69, 0xf8, 0x6d, 0x44
+ .byte 0x05, 0xe8, 0xad, 0xd9, 0x5f, 0xc4
+ .byte 0x04, 0xde, 0xdb, 0x2f, 0x6c
+ .byte 0x0a, 0x97, 0xff, 0xb8, 0x81, 0xcb, 0x6f, 0x66, 0x66, 0xf5, 0x74
+ .byte 0x0a, 0xac, 0xab, 0xb8, 0xdb, 0xa1, 0x70, 0xc9, 0xd4, 0xc8, 0x13
+ .byte 0x09, 0x54, 0x6b, 0xab, 0xb8, 0xdb, 0xbb, 0x6b, 0x75, 0x70
+ .byte 0x04, 0xe8, 0x90, 0xb8, 0x13
+ .byte 0x04, 0xe8, 0xe2, 0x69, 0x63
+ .byte 0x03, 0x24, 0x3f, 0x08
+ .byte 0x07, 0x74, 0x64, 0xf8, 0xeb, 0xc5, 0x72, 0xd5
+ .byte 0x06, 0xe7, 0xc6, 0x6b, 0x6e, 0x5c, 0x6e
+ .byte 0x03, 0x60, 0x6e, 0x27
+ .byte 0x03, 0x60, 0x8d, 0xce
+ .byte 0x07, 0x60, 0x8d, 0x69, 0x6c, 0xaf, 0x67, 0xf4
+ .byte 0x03, 0xe7, 0x93, 0x27
+ .byte 0x03, 0xe7, 0x20, 0xce
+ .byte 0x03, 0x28, 0x6d, 0x55
+ .byte 0x02, 0x28, 0xce
+ .byte 0x04, 0x00, 0xf4, 0xcb, 0x75
+ .byte 0x03, 0x00, 0xab, 0xd4
+ .byte 0x04, 0xe7, 0x62, 0xb1, 0x6b
+ .byte 0x05, 0xef, 0x70, 0xad, 0xfa, 0xce
+ .byte 0x09, 0xfe, 0xe9, 0x74, 0xf8, 0xd3, 0xff, 0xfd, 0x66, 0x6f
+ .byte 0x02, 0x25, 0x6e
+ .byte 0x03, 0x54, 0xeb, 0xc4
+ .byte 0x01, 0x17
+ .byte 0x03, 0x9d, 0xe5, 0x74
+ .byte 0x03, 0x17, 0xd4, 0x9a
+ .byte 0x03, 0x5d, 0x14, 0xf0
+ .byte 0x02, 0x9d, 0xc4
+ .byte 0x03, 0x2c, 0xb5, 0xb9
+ .byte 0x05, 0x2d, 0xdd, 0xe1, 0xbd, 0x63
+ .byte 0x04, 0x54, 0xf7, 0xee, 0xc4
+ .byte 0x06, 0x54, 0xe5, 0xff, 0x66, 0x1d, 0xe5
+ .byte 0x03, 0xae, 0x1d, 0xe5
+ .byte 0x05, 0x51, 0xfb, 0xe6, 0xfa, 0x4b
+ .byte 0x04, 0xac, 0x47, 0xcb, 0xa0
+ .byte 0x08, 0x74, 0x77, 0xf4, 0x6b, 0x26, 0xa7, 0x61, 0xf7
+ .byte 0x02, 0x24, 0x26
+ .byte 0x05, 0xf6, 0x83, 0xf9, 0x73, 0x58
+ .byte 0x07, 0x96, 0x98, 0x72, 0xd5, 0x69, 0x74, 0x79
+ .byte 0x03, 0x96, 0x48, 0xb9
+ .byte 0x03, 0x96, 0x49, 0xb9
+ .byte 0x02, 0x96, 0xc4
+ .byte 0x03, 0x86, 0x5f, 0x0b
+ .byte 0x07, 0x97, 0xff, 0x63, 0x79, 0x63, 0xaf, 0x73
+ .byte 0x03, 0x54, 0xf2, 0x0b
+ .byte 0x04, 0x54, 0x92, 0xb3, 0xc4
+ .byte 0x04, 0x2c, 0x92, 0xb3, 0xb9
+ .byte 0x06, 0xb2, 0x22, 0x12, 0xfd, 0xfa, 0x10
+ .byte 0x03, 0xb2, 0x53, 0x3e
+ .byte 0x02, 0xb2, 0x07
+ .byte 0x02, 0x54, 0x07
+ .byte 0x03, 0x04, 0x14, 0xf0
+ .byte 0x02, 0x04, 0x29
+ .byte 0x0b, 0x74, 0xf0, 0x15, 0x5f, 0x8a, 0xf4, 0x5f, 0xb9, 0x5f, 0x9b, 0xaf
+ .byte 0x06, 0x51, 0x66, 0x95, 0x6e, 0x61, 0xf7
+ .byte 0x03, 0x38, 0x94, 0x31
+ .byte 0x03, 0x38, 0x94, 0x32
+ .byte 0x03, 0x46, 0xd5, 0x72
+ .byte 0x02, 0x46, 0xc9
+ .byte 0x02, 0x46, 0xdf
+ .byte 0x05, 0xc3, 0x6f, 0x70, 0xdb, 0xec
+ .byte 0x06, 0xc2, 0x73, 0x79, 0x73, 0xf2, 0x08
+ .byte 0x06, 0xc2, 0xd1, 0x67, 0x6f, 0x74, 0x6f
+ .byte 0x05, 0x54, 0x12, 0xfd, 0xfa, 0x94
+ .byte 0x02, 0x54, 0x94
+ .byte 0x07, 0x74, 0xfb, 0xbe, 0xe5, 0xb3, 0x99, 0xce
+ .byte 0x02, 0xc2, 0xce
+ .byte 0x03, 0xc2, 0x99, 0x2a
+ .byte 0x04, 0xc2, 0x99, 0xc6, 0x2a
+ .byte 0x02, 0xc2, 0x06
+ .byte 0x02, 0x51, 0xe3
+ .byte 0x05, 0xc0, 0xaf, 0x1f, 0x62, 0xa5
+ .byte 0x06, 0x54, 0x2f, 0xcb, 0x6d, 0x61, 0xfd
+ .byte 0x03, 0x21, 0x22, 0x10
+ .byte 0x01, 0x9e
+ .byte 0x05, 0x25, 0x8d, 0x76, 0x8b, 0xb7
+ .byte 0x03, 0x16, 0x50, 0xab
+ .byte 0x05, 0x16, 0xff, 0x40, 0x59, 0x6e
+ .byte 0x08, 0x54, 0xfb, 0xbe, 0xe5, 0xb3, 0x20, 0x99, 0xce
+ .byte 0x06, 0x2d, 0x06, 0x3f, 0x8a, 0x61, 0xfe
+ .byte 0x07, 0x54, 0xd2, 0xdc, 0x64, 0x61, 0x74, 0x61
+ .byte 0x05, 0x54, 0x93, 0xd4, 0x91, 0xec
+ .byte 0x05, 0x87, 0x69, 0x66, 0xff, 0xec
+ .byte 0x06, 0x54, 0xdf, 0xd4, 0x75, 0x62, 0x41
+ .byte 0x03, 0x54, 0xdf, 0x41
+ .byte 0x05, 0x1c, 0x72, 0xe2, 0x15, 0x41
+ .byte 0x04, 0x54, 0xd2, 0x42, 0xec
+ .byte 0x01, 0x9e
+ .byte 0x0d, 0x54, 0x63, 0x6f, 0x6d, 0x70, 0xf0, 0xfa, 0xc9, 0x3f, 0x74, 0x75, 0x72, 0x6e
+ .byte 0x04, 0x54, 0xf5, 0xcb, 0xec
+ .byte 0x03, 0x1c, 0xcb, 0xec
+ .byte 0x02, 0x4f, 0x7b
+ .byte 0x02, 0x4f, 0x4d
+ .byte 0x06, 0x4f, 0x6e, 0x75, 0xee, 0xb8, 0x73
+ .byte 0x03, 0x0f, 0xf9, 0x31
+ .byte 0x03, 0x0f, 0xf9, 0x32
+ .byte 0x04, 0x09, 0xf8, 0xdc, 0x31
+ .byte 0x04, 0x09, 0xf8, 0xdc, 0x32
+ .byte 0x03, 0x21, 0xe4, 0x23
+ .byte 0x01, 0x9e
+ .byte 0x02, 0x5d, 0x23
+ .byte 0x04, 0x5d, 0x29, 0x5f, 0x5e
+ .byte 0x02, 0x9e, 0x31
+ .byte 0x05, 0xa4, 0x63, 0x1f, 0x1a, 0xc5
+ .byte 0x03, 0x74, 0x1a, 0xc5
+ .byte 0x06, 0x84, 0x79, 0x70, 0xcc, 0x74, 0x66
+ .byte 0x08, 0x54, 0x43, 0xcc, 0xac, 0x5f, 0x64, 0x6f, 0xcf
+ .byte 0x03, 0xe8, 0xcc, 0xac
+ .byte 0x04, 0xa6, 0xfb, 0x6c, 0xc7
+ .byte 0x03, 0x54, 0xaa, 0x79
+ .byte 0x04, 0x52, 0x5f, 0x65, 0xa0
+
+.globl kallsyms_markers
+ .align 8
+kallsyms_markers:
+ .quad 0
+
+.globl kallsyms_token_table
+ .align 8
+kallsyms_token_table:
+ .asciz "Tdo_trap_ec"
+ .asciz "_page_paddr"
+ .asciz "age_paddr"
+ .asciz "e_paddr"
+ .asciz "tsbi_pu"
+ .asciz "_pu"
+ .asciz "mmu"
+ .asciz "memset"
+ .asciz "gs"
+ .asciz "Tmacr"
+ .asciz "acr"
+ .asciz "set_timer"
+ .asciz "t_timer"
+ .asciz "timer"
+ .asciz "p_from_p"
+ .asciz "To"
+ .asciz "asm"
+ .asciz "mm"
+ .asciz "inl"
+ .asciz "bol"
+ .asciz "tch"
+ .asciz "ch"
+ .asciz "tre"
+ .asciz "Tuart_send"
+ .asciz "send"
+ .asciz "nd"
+ .asciz "numb"
+ .asciz "umb"
+ .asciz "Tb"
+ .asciz "ree_pa"
+ .asciz "e_pa"
+ .asciz "an_"
+ .asciz "load_"
+ .asciz "T__"
+ .asciz "memset_16bytes_"
+ .asciz "t_uart"
+ .asciz "Tshow"
+ .asciz "Tdo_exceptio"
+ .asciz "_stack"
+ .asciz "_misaligned"
+ .asciz "Tdo_trap_store_"
+ .asciz "t_string"
+ .asciz "map_address"
+ .asciz "ap_address"
+ .asciz "Thandle_"
+ .asciz "Tenable_"
+ .asciz "."
+ .asciz "kerne"
+ .asciz "_mapping"
+ .asciz "1"
+ .asciz "2"
+ .asciz "talloc_init_p"
+ .asciz "alloc_init_p"
+ .asciz "loc_init_p"
+ .asciz "6"
+ .asciz "c_init_p"
+ .asciz "tmy_memcpy_"
+ .asciz "p_from_"
+ .asciz "memset_16bytes"
+ .asciz "tcreate"
+ .asciz "memset_16"
+ .asciz "reate"
+ .asciz "bytes"
+ .asciz "_re"
+ .asciz "from_"
+ .asciz "_test"
+ .asciz "memcpy_"
+ .asciz "init_p"
+ .asciz "apping"
+ .asciz "tpfn_p"
+ .asciz "tmy_asm_"
+ .asciz "erne"
+ .asciz "enable_"
+ .asciz "handle_"
+ .asciz "hand"
+ .asciz "address"
+ .asciz "ress"
+ .asciz "string"
+ .asciz "tset_p"
+ .asciz "Tfunc_"
+ .asciz "store_"
+ .asciz "tprint_"
+ .asciz "R"
+ .asciz "memset_1"
+ .asciz "T"
+ .asciz "isaligned"
+ .asciz "aligned"
+ .asciz "igned"
+ .asciz "tack"
+ .asciz "exceptio"
+ .asciz "excep"
+ .asciz "by"
+ .asciz "ow"
+ .asciz "Tpu"
+ .asciz "uart"
+ .asciz "_"
+ .asciz "Tdo_trap_ins"
+ .asciz "a"
+ .asciz "b"
+ .asciz "c"
+ .asciz "d"
+ .asciz "e"
+ .asciz "f"
+ .asciz "g"
+ .asciz "h"
+ .asciz "i"
+ .asciz "ins"
+ .asciz "k"
+ .asciz "l"
+ .asciz "m"
+ .asciz "n"
+ .asciz "o"
+ .asciz "p"
+ .asciz "q"
+ .asciz "r"
+ .asciz "s"
+ .asciz "t"
+ .asciz "u"
+ .asciz "v"
+ .asciz "w"
+ .asciz "x"
+ .asciz "y"
+ .asciz "is"
+ .asciz "addr"
+ .asciz "cep"
+ .asciz "app"
+ .asciz "ap"
+ .asciz "tio"
+ .asciz "fro"
+ .asciz "bo"
+ .asciz "tpfn"
+ .asciz "um"
+ .asciz "Tm"
+ .asciz "ack"
+ .asciz "tsbi"
+ .asciz "Tsh"
+ .asciz "tpf"
+ .asciz "ned"
+ .asciz "loc"
+ .asciz "ec"
+ .asciz "tsb"
+ .asciz "n_"
+ .asciz "T_"
+ .asciz "t_1"
+ .asciz "rint_"
+ .asciz "tore_"
+ .asciz "time"
+ .asciz "load"
+ .asciz "asm_test"
+ .asciz "unc_"
+ .asciz "Tplic_"
+ .asciz "tge"
+ .asciz "set_p"
+ .asciz "access_"
+ .asciz "tring"
+ .asciz "enab"
+ .asciz "Tpli"
+ .asciz "Tuart_"
+ .asciz "t.loop"
+ .asciz "acces"
+ .asciz "text"
+ .asciz "ex"
+ .asciz "xt"
+ .asciz "ces"
+ .asciz "ts"
+ .asciz "ss"
+ .asciz "Ts"
+ .asciz "fr"
+ .asciz "e_p"
+ .asciz "loop"
+ .asciz "memcp"
+ .asciz "all"
+ .asciz "tk"
+ .asciz "ag"
+ .asciz "Tf"
+ .asciz "le"
+ .asciz "memc"
+ .asciz "rea"
+ .asciz "t__"
+ .asciz "r_"
+ .asciz "t."
+ .asciz "uart_"
+ .asciz "memse"
+ .asciz "tor"
+ .asciz "sym"
+ .asciz "irq"
+ .asciz "rq"
+ .asciz "loo"
+ .asciz "_m"
+ .asciz "li"
+ .asciz "ig"
+ .asciz "gd"
+ .asciz "tc"
+ .asciz "ab"
+ .asciz "ttest_"
+ .asciz "tmy_"
+ .asciz "init"
+ .asciz "er"
+ .asciz "un"
+ .asciz "en"
+ .asciz "ym"
+ .asciz "and"
+ .asciz "md"
+ .asciz "l_"
+ .asciz "rin"
+ .asciz "le_"
+ .asciz "fault"
+ .asciz "ne"
+ .asciz "ce"
+ .asciz "asm_"
+ .asciz "my_"
+ .asciz "faul"
+ .asciz "_s"
+ .asciz "or"
+ .asciz "tp"
+ .asciz "_p"
+ .asciz "ul"
+ .asciz "ing"
+ .asciz "fa"
+ .asciz "s_"
+ .asciz "test_"
+ .asciz "uar"
+ .asciz "ti"
+ .asciz "add"
+ .asciz "as"
+ .asciz "t_p"
+ .asciz "an"
+ .asciz "mem"
+ .asciz "ini"
+ .asciz "ge"
+ .asciz "ac"
+ .asciz "Tdo_trap_"
+ .asciz "Tp"
+ .asciz "c_"
+ .asciz "y_"
+ .asciz "trap_"
+ .asciz "test"
+ .asciz "ad"
+ .asciz "m_"
+ .asciz "Tdo_"
+ .asciz "ar"
+ .asciz "lo"
+ .asciz "re"
+ .asciz "ap_"
+ .asciz "al"
+ .asciz "se"
+ .asciz "Td"
+ .asciz "me"
+ .asciz "o_"
+ .asciz "p_"
+ .asciz "e_"
+ .asciz "tr"
+ .asciz "tes"
+ .asciz "in"
+ .asciz "te"
+ .asciz "t_"
+
+.globl kallsyms_token_index
+ .align 8
+kallsyms_token_index:
+ .short 0
+ .short 12
+ .short 24
+ .short 34
+ .short 42
+ .short 50
+ .short 54
+ .short 58
+ .short 65
+ .short 68
+ .short 74
+ .short 78
+ .short 88
+ .short 96
+ .short 102
+ .short 111
+ .short 114
+ .short 118
+ .short 121
+ .short 125
+ .short 129
+ .short 133
+ .short 136
+ .short 140
+ .short 151
+ .short 156
+ .short 159
+ .short 164
+ .short 168
+ .short 171
+ .short 178
+ .short 183
+ .short 187
+ .short 193
+ .short 197
+ .short 213
+ .short 220
+ .short 226
+ .short 239
+ .short 246
+ .short 258
+ .short 274
+ .short 283
+ .short 295
+ .short 306
+ .short 315
+ .short 324
+ .short 326
+ .short 332
+ .short 341
+ .short 343
+ .short 345
+ .short 359
+ .short 372
+ .short 383
+ .short 385
+ .short 394
+ .short 406
+ .short 414
+ .short 429
+ .short 437
+ .short 447
+ .short 453
+ .short 459
+ .short 463
+ .short 469
+ .short 475
+ .short 483
+ .short 490
+ .short 497
+ .short 504
+ .short 513
+ .short 518
+ .short 526
+ .short 534
+ .short 539
+ .short 547
+ .short 552
+ .short 559
+ .short 566
+ .short 573
+ .short 580
+ .short 588
+ .short 590
+ .short 599
+ .short 601
+ .short 611
+ .short 619
+ .short 625
+ .short 630
+ .short 639
+ .short 645
+ .short 648
+ .short 651
+ .short 655
+ .short 660
+ .short 662
+ .short 675
+ .short 677
+ .short 679
+ .short 681
+ .short 683
+ .short 685
+ .short 687
+ .short 689
+ .short 691
+ .short 693
+ .short 697
+ .short 699
+ .short 701
+ .short 703
+ .short 705
+ .short 707
+ .short 709
+ .short 711
+ .short 713
+ .short 715
+ .short 717
+ .short 719
+ .short 721
+ .short 723
+ .short 725
+ .short 727
+ .short 730
+ .short 735
+ .short 739
+ .short 743
+ .short 746
+ .short 750
+ .short 754
+ .short 757
+ .short 762
+ .short 765
+ .short 768
+ .short 772
+ .short 777
+ .short 781
+ .short 785
+ .short 789
+ .short 793
+ .short 796
+ .short 800
+ .short 803
+ .short 806
+ .short 810
+ .short 816
+ .short 822
+ .short 827
+ .short 832
+ .short 841
+ .short 846
+ .short 853
+ .short 857
+ .short 863
+ .short 871
+ .short 877
+ .short 882
+ .short 887
+ .short 894
+ .short 901
+ .short 907
+ .short 912
+ .short 915
+ .short 918
+ .short 922
+ .short 925
+ .short 928
+ .short 931
+ .short 934
+ .short 938
+ .short 943
+ .short 949
+ .short 953
+ .short 956
+ .short 959
+ .short 962
+ .short 965
+ .short 970
+ .short 974
+ .short 978
+ .short 981
+ .short 984
+ .short 990
+ .short 996
+ .short 1000
+ .short 1004
+ .short 1008
+ .short 1011
+ .short 1015
+ .short 1018
+ .short 1021
+ .short 1024
+ .short 1027
+ .short 1030
+ .short 1033
+ .short 1040
+ .short 1045
+ .short 1050
+ .short 1053
+ .short 1056
+ .short 1059
+ .short 1062
+ .short 1066
+ .short 1069
+ .short 1072
+ .short 1076
+ .short 1080
+ .short 1086
+ .short 1089
+ .short 1092
+ .short 1097
+ .short 1101
+ .short 1106
+ .short 1109
+ .short 1112
+ .short 1115
+ .short 1118
+ .short 1121
+ .short 1125
+ .short 1128
+ .short 1131
+ .short 1137
+ .short 1141
+ .short 1144
+ .short 1148
+ .short 1151
+ .short 1155
+ .short 1158
+ .short 1162
+ .short 1166
+ .short 1169
+ .short 1172
+ .short 1182
+ .short 1185
+ .short 1188
+ .short 1191
+ .short 1197
+ .short 1202
+ .short 1205
+ .short 1208
+ .short 1213
+ .short 1216
+ .short 1219
+ .short 1222
+ .short 1226
+ .short 1229
+ .short 1232
+ .short 1235
+ .short 1238
+ .short 1241
+ .short 1244
+ .short 1247
+ .short 1250
+ .short 1254
+ .short 1257
+ .short 1260

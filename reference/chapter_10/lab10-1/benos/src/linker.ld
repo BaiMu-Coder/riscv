@@ -37,7 +37,7 @@ SECTIONS
        _erodata = .;
 
 	/*
-        * 数据段
+        * 数据段      初始化的全局变量和静态变量
         */
 	_data = .;
 	.data : { *(.data) }
@@ -47,7 +47,7 @@ SECTIONS
 	_edata = .;
 
 	/*
-        * bss段
+        * bss段   未初始化的全局变量和静态变量
         *
         * ALIGN(8)表示8个字节对齐
         * bss_begin的起始地址以8字节对齐

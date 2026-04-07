@@ -9,6 +9,7 @@ _start:
 	call print_asm
 
 	/* 设置栈, 栈的大小为4KB */
+	/* 启动阶段的内核栈，不是后面每个进程各自的内核栈 */
 	la sp, stacks_start
 	li t0, 4096
 	add sp, sp, t0
@@ -22,7 +23,7 @@ print_asm:
 
 	la a0, boot_string
 	call put_string_uart
-
+  
 	/*恢复返回地址ra*/
 	mv ra, s1
 	ret

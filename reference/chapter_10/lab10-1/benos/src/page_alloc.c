@@ -8,10 +8,13 @@ static unsigned short mem_map[NR_PAGES] = {0,};
 
 static unsigned long phy_start_address;
 
+
+
+//把给定物理内存区间按页对齐后，统计出总可用内存和空闲页数，并记录对齐后的物理起始地址。
 void mem_init(unsigned long start_mem, unsigned long end_mem)
 {
-	unsigned long nr_free_pages = 0;
-	unsigned long free;
+	unsigned long nr_free_pages = 0; //可用页数
+	unsigned long free;              //可用内存的大小
 
 	start_mem = PAGE_ALIGN(start_mem);
 	phy_start_address = start_mem;
@@ -25,6 +28,8 @@ void mem_init(unsigned long start_mem, unsigned long end_mem)
 
 	printk("Memory: %uKB available, %u free pages\n", free/1024, nr_free_pages);
 }
+
+
 
 unsigned long get_free_page(void)
 {

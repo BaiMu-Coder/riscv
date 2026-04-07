@@ -13,6 +13,8 @@ extern char idmap_pg_dir[];
 extern char _text_boot[], _etext_boot[];
 extern char _text[], _etext[];
 
+
+
 static void alloc_init_pte(pmd_t *pmdp, unsigned long addr,
 		unsigned long end, unsigned long phys,
 		pgprot_t prot,
@@ -37,10 +39,13 @@ static void alloc_init_pte(pmd_t *pmdp, unsigned long addr,
 	ptep = get_ptep_from_pmdp(pmdp, addr);
 	do {
 		/* 设置PTE*/
-		set_pte(ptep, pfn_pte(PFN_DOWN(phys), prot));
+		set_pte(ptep, pfn_pte(PFN_DOWN(phys), prot)); 
 		phys += PAGE_SIZE;
 	} while (ptep++, addr += PAGE_SIZE, addr != end);
 }
+
+
+
 
 static void alloc_init_pmd(pgd_t *pgdp, unsigned long addr,
 		unsigned long end, unsigned long phys,
@@ -74,6 +79,8 @@ static void alloc_init_pmd(pgd_t *pgdp, unsigned long addr,
 		phys += next - addr;
 	} while (pmdp++, addr = next, addr != end);
 }
+
+
 
 /*
  * __create_pgd_mapping: 创建页表
@@ -109,6 +116,8 @@ static void __create_pgd_mapping(pgd_t *pgdir, unsigned long phys,
 	} while (pgdp++, addr = next, addr != end);
 }
 
+
+
 /*
  * 分配一个page用于各级页表
  */
@@ -121,6 +130,8 @@ static unsigned long early_pgtable_alloc(void)
 
 	return phys;
 }
+
+
 
 static void create_identical_mapping(void)
 {
@@ -146,6 +157,8 @@ static void create_identical_mapping(void)
 			0);
 	//printk("map memory done\n");
 }
+
+
 
 static void create_mmio_mapping(void)
 {
@@ -176,6 +189,8 @@ static void create_mmio_mapping(void)
 			early_pgtable_alloc,
 			0);
 }
+
+
 
 void paging_init(void)
 {

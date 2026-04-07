@@ -18,7 +18,7 @@ BUILD_DIR = $(BUILD_ROOT)/benos
 SRC_DIR = src
 LIB_DIR = lib
 BUILD_LIB_DIR = $(BUILD_ROOT)/lib
-
+  
 all : clean benos.bin mysbi.bin benos_payload.bin
 
 # Check if verbosity is ON for build process

@@ -1,0 +1,419 @@
+
+分配公共符号
+公共符号            大小              文件
+
+jiffies             0x8               build/benos/timer_c.o
+
+内存配置
+
+名称           来源             长度             属性
+*default*        0x0000000000000000 0xffffffffffffffff
+
+链结器命令稿和内存映射
+
+                0x0000000080200000                . = 0x80200000
+                0x0000000080200000                _text_boot = .
+
+.text.boot      0x0000000080200000       0x3c
+ *(.text.boot)
+ .text.boot     0x0000000080200000       0x3c build/benos/boot_s.o
+                0x0000000080200000                _start
+                0x000000008020003c                _etext_boot = .
+                0x0000000080200040                . = ALIGN (0x8)
+                0x0000000080200040                _text = .
+                0x0000000080200040                _stext = .
+
+.text           0x0000000080200040     0x3f64
+ *(.text)
+ .text          0x0000000080200040      0x7e8 build/benos/mmu_c.o
+                0x00000000802007e4                paging_init
+ .text          0x0000000080200828      0x488 build/benos/kallsyms_c.o
+                0x0000000080200a40                kallsyms_lookup
+                0x0000000080200c1c                print_symbol
+ .text          0x0000000080200cb0      0x6e4 build/benos/trap_c.o
+                0x0000000080200cb0                panic
+                0x0000000080200cd0                show_regs
+                0x0000000080200f50                do_trap_unknown
+                0x0000000080200f8c                do_trap_insn_misaligned
+                0x0000000080200fc8                do_trap_insn_fault
+                0x0000000080201004                do_trap_insn_illegal
+                0x0000000080201040                do_trap_load_misaligned
+                0x000000008020107c                do_trap_load_fault
+                0x00000000802010b8                do_trap_store_misaligned
+                0x00000000802010f4                do_trap_store_fault
+                0x0000000080201130                do_trap_ecall_u
+                0x000000008020116c                do_trap_ecall_s
+                0x00000000802011a8                do_trap_break
+                0x00000000802011e4                do_page_fault
+                0x000000008020125c                do_exception
+                0x000000008020131c                trap_init
+ .text          0x0000000080201394      0x2e4 build/benos/uart_c.o
+                0x0000000080201394                uart_send
+                0x00000000802013f4                uart_get
+                0x000000008020144c                uart_send_string
+                0x00000000802014b8                putchar
+                0x0000000080201508                uart_init
+                0x00000000802015e8                handle_uart_irq
+                0x0000000080201638                enable_uart_plic
+ .text          0x0000000080201678      0x1b0 build/benos/page_alloc_c.o
+                0x0000000080201678                mem_init
+                0x000000008020173c                get_free_page
+                0x00000000802017dc                free_page
+ .text          0x0000000080201828      0x1f4 build/benos/stacktrace_c.o
+                0x00000000802019a4                show_stack
+                0x00000000802019ec                dump_stack
+ .text          0x0000000080201a1c      0x374 build/benos/plic_c.o
+                0x0000000080201a1c                plic_set_prority
+                0x0000000080201a84                plic_enable_irq
+                0x0000000080201be8                plic_handle_irq
+                0x0000000080201cac                plic_init
+ .text          0x0000000080201d90      0x14c build/benos/timer_c.o
+                0x0000000080201df4                reset_timer
+                0x0000000080201e44                timer_init
+                0x0000000080201e6c                handle_timer_irq
+ .text          0x0000000080201edc      0x2d0 build/benos/memset_c.o
+                0x0000000080202154                memset
+ .text          0x00000000802021ac      0xa78 build/benos/kernel_c.o
+                0x0000000080202678                inline_asm_test
+                0x0000000080202740                asm_test
+                0x0000000080202b3c                kernel_main
+ .text          0x0000000080202c24       0x18 build/benos/memset_s.o
+                0x0000000080202c24                __memset_16bytes_asm
+ .text          0x0000000080202c3c      0x180 build/benos/entry_s.o
+                0x0000000080202c3c                do_exception_vector
+                0x0000000080202d8c                trigger_load_access_fault
+                0x0000000080202d98                enable_mmu_relocate
+ .text          0x0000000080202dbc        0x0 build/benos/boot_s.o
+ *fill*         0x0000000080202dbc        0x4 
+ .text          0x0000000080202dc0      0x217 build/benos/asm_test_s.o
+                0x0000000080202dc0                my_test_data
+                0x0000000080202dc8                load_store_test
+                0x0000000080202e00                shift_test
+                0x0000000080202e48                add_sub_test
+                0x0000000080202e8c                add_test
+                0x0000000080202e98                branch_test
+                0x0000000080202ebc                my_memcpy_test
+                0x0000000080202eec                compare_and_return
+                0x0000000080202f04                sel_test
+                0x0000000080202f1c                bl_test
+                0x0000000080202f38                func_addr
+                0x0000000080202f50                func_string
+                0x0000000080202f68                func_num_syms
+                0x0000000080202f70                op_1
+                0x0000000080202f78                op_2
+                0x0000000080202f80                macro_test_1
+                0x0000000080202fa8                macro_test_2
+ *fill*         0x0000000080202fd7        0x1 
+ .text          0x0000000080202fd8       0x9c build/benos/early_printk_s.o
+                0x0000000080202fd8                __init_uart
+                0x0000000080203030                put_uart
+                0x0000000080203050                put_string_uart
+ .text          0x0000000080203074      0xe68 build/lib/printk_c.o
+                0x0000000080203518                myprintf
+                0x0000000080203cc4                init_printk_done
+                0x0000000080203d7c                printk
+ .text          0x0000000080203edc       0xc8 build/lib/string_c.o
+                0x0000000080203edc                strlen
+                0x0000000080203f30                memcpy
+ .text          0x0000000080203fa4        0x0 .tmp_kallsyms2.o
+                0x0000000080204000                . = ALIGN (0x1000)
+                0x0000000080204000                _etext = .
+                0x0000000080204000                _rodata = .
+
+.rodata         0x0000000080204000     0x1b00
+ *(.rodata)
+ .rodata        0x0000000080204000       0x21 build/benos/mmu_c.o
+ *fill*         0x0000000080204021        0x7 
+ .rodata        0x0000000080204028       0x20 build/benos/kallsyms_c.o
+ .rodata        0x0000000080204048      0x4ba build/benos/trap_c.o
+ *fill*         0x0000000080204502        0x6 
+ .rodata        0x0000000080204508       0x20 build/benos/uart_c.o
+ .rodata        0x0000000080204528       0x27 build/benos/page_alloc_c.o
+ *fill*         0x000000008020454f        0x1 
+ .rodata        0x0000000080204550        0xd build/benos/stacktrace_c.o
+ *fill*         0x000000008020455d        0x3 
+ .rodata        0x0000000080204560       0x15 build/benos/plic_c.o
+ *fill*         0x0000000080204575        0x3 
+ .rodata        0x0000000080204578       0x2e build/benos/timer_c.o
+ *fill*         0x00000000802045a6        0x2 
+ .rodata        0x00000000802045a8      0x2e2 build/benos/kernel_c.o
+ *fill*         0x000000008020488a        0x6 
+ .rodata        0x0000000080204890       0x10 build/benos/boot_s.o
+                0x0000000080204890                boot_string
+ .rodata        0x00000000802048a0      0x120 build/lib/printk_c.o
+ *fill*         0x00000000802049c0       0x40 
+ .rodata        0x0000000080204a00     0x1100 .tmp_kallsyms2.o
+                0x0000000080204a00                kallsyms_addresses
+                0x0000000080204f00                kallsyms_num_syms
+                0x0000000080205000                kallsyms_names
+                0x0000000080205300                kallsyms_markers
+                0x0000000080205400                kallsyms_token_table
+                0x0000000080205900                kallsyms_token_index
+                0x0000000080205b00                _erodata = .
+                0x0000000080205b00                _data = .
+
+.rela.dyn       0x0000000080205b00        0x0
+ .rela.text     0x0000000080205b00        0x0 build/benos/mmu_c.o
+ .rela.rodata   0x0000000080205b00        0x0 build/benos/mmu_c.o
+
+.data           0x0000000080206000     0x1000
+ *(.data)
+ .data          0x0000000080206000        0x0 build/benos/mmu_c.o
+ .data          0x0000000080206000        0x0 build/benos/kallsyms_c.o
+ .data          0x0000000080206000        0x0 build/benos/trap_c.o
+ .data          0x0000000080206000        0x0 build/benos/uart_c.o
+ .data          0x0000000080206000        0x0 build/benos/page_alloc_c.o
+ .data          0x0000000080206000        0x0 build/benos/stacktrace_c.o
+ .data          0x0000000080206000        0x0 build/benos/plic_c.o
+ .data          0x0000000080206000        0x0 build/benos/timer_c.o
+ .data          0x0000000080206000        0x0 build/benos/memset_c.o
+ .data          0x0000000080206000        0x0 build/benos/kernel_c.o
+ .data          0x0000000080206000        0x0 build/benos/memset_s.o
+ .data          0x0000000080206000        0x0 build/benos/entry_s.o
+ .data          0x0000000080206000     0x1000 build/benos/boot_s.o
+                0x0000000080206000                stacks_start
+ .data          0x0000000080207000        0x0 build/benos/asm_test_s.o
+ .data          0x0000000080207000        0x0 build/benos/early_printk_s.o
+ .data          0x0000000080207000        0x0 build/lib/printk_c.o
+ .data          0x0000000080207000        0x0 build/lib/string_c.o
+ .data          0x0000000080207000        0x0 .tmp_kallsyms2.o
+
+.sdata          0x0000000080207000       0x10
+ .sdata         0x0000000080207000        0x4 build/benos/uart_c.o
+ *fill*         0x0000000080207004        0x4 
+ .sdata         0x0000000080207008        0x8 build/lib/printk_c.o
+                0x0000000080208000                . = ALIGN (0x1000)
+                0x0000000080208000                idmap_pg_dir = .
+                0x0000000080209000                . = (. + 0x1000)
+                0x0000000080209000                _edata = .
+                0x0000000080209000                . = ALIGN (0x8)
+                0x0000000080209000                _bss = .
+
+.bss            0x0000000080209000    0x22448
+ *(.bss*)
+ .bss           0x0000000080209000        0x0 build/benos/mmu_c.o
+ .bss           0x0000000080209000        0x0 build/benos/kallsyms_c.o
+ .bss           0x0000000080209000        0x0 build/benos/trap_c.o
+ .bss           0x0000000080209000        0x0 build/benos/uart_c.o
+ .bss           0x0000000080209000     0x2008 build/benos/page_alloc_c.o
+ .bss           0x000000008020b008        0x0 build/benos/stacktrace_c.o
+ .bss           0x000000008020b008        0x0 build/benos/plic_c.o
+ .bss           0x000000008020b008        0x0 build/benos/timer_c.o
+ .bss           0x000000008020b008        0x0 build/benos/memset_c.o
+ .bss           0x000000008020b008        0x0 build/benos/kernel_c.o
+ .bss           0x000000008020b008        0x0 build/benos/memset_s.o
+ .bss           0x000000008020b008        0x0 build/benos/entry_s.o
+ .bss           0x000000008020b008        0x0 build/benos/boot_s.o
+ .bss           0x000000008020b008        0x0 build/benos/asm_test_s.o
+ .bss           0x000000008020b008        0x0 build/benos/early_printk_s.o
+ .bss           0x000000008020b008    0x20418 build/lib/printk_c.o
+ .bss           0x000000008022b420        0x0 build/lib/string_c.o
+ .bss           0x000000008022b420        0x0 .tmp_kallsyms2.o
+ *fill*         0x000000008022b420       0x20 
+ COMMON         0x000000008022b440        0x8 build/benos/timer_c.o
+                0x000000008022b440                jiffies
+                0x000000008022b448                _ebss = .
+LOAD build/benos/mmu_c.o
+LOAD build/benos/kallsyms_c.o
+LOAD build/benos/trap_c.o
+LOAD build/benos/uart_c.o
+LOAD build/benos/page_alloc_c.o
+LOAD build/benos/stacktrace_c.o
+LOAD build/benos/plic_c.o
+LOAD build/benos/timer_c.o
+LOAD build/benos/memset_c.o
+LOAD build/benos/kernel_c.o
+LOAD build/benos/memset_s.o
+LOAD build/benos/entry_s.o
+LOAD build/benos/boot_s.o
+LOAD build/benos/asm_test_s.o
+LOAD build/benos/early_printk_s.o
+LOAD build/lib/printk_c.o
+LOAD build/lib/string_c.o
+LOAD .tmp_kallsyms2.o
+OUTPUT(build/benos/benos.elf elf64-littleriscv)
+
+.debug_info     0x0000000000000000     0x3229
+ .debug_info    0x0000000000000000      0x78e build/benos/mmu_c.o
+ .debug_info    0x000000000000078e      0x368 build/benos/kallsyms_c.o
+ .debug_info    0x0000000000000af6      0x76e build/benos/trap_c.o
+ .debug_info    0x0000000000001264      0x35f build/benos/uart_c.o
+ .debug_info    0x00000000000015c3      0x133 build/benos/page_alloc_c.o
+ .debug_info    0x00000000000016f6      0x446 build/benos/stacktrace_c.o
+ .debug_info    0x0000000000001b3c      0x4ee build/benos/plic_c.o
+ .debug_info    0x000000000000202a      0x1bb build/benos/timer_c.o
+ .debug_info    0x00000000000021e5      0x22d build/benos/memset_c.o
+ .debug_info    0x0000000000002412      0x791 build/benos/kernel_c.o
+ .debug_info    0x0000000000002ba3       0x2e build/benos/memset_s.o
+ .debug_info    0x0000000000002bd1       0x2e build/benos/entry_s.o
+ .debug_info    0x0000000000002bff       0x2e build/benos/boot_s.o
+ .debug_info    0x0000000000002c2d       0x2e build/benos/asm_test_s.o
+ .debug_info    0x0000000000002c5b       0x2e build/benos/early_printk_s.o
+ .debug_info    0x0000000000002c89      0x498 build/lib/printk_c.o
+ .debug_info    0x0000000000003121      0x108 build/lib/string_c.o
+
+.debug_abbrev   0x0000000000000000      0xff3
+ .debug_abbrev  0x0000000000000000      0x199 build/benos/mmu_c.o
+ .debug_abbrev  0x0000000000000199      0x130 build/benos/kallsyms_c.o
+ .debug_abbrev  0x00000000000002c9      0x195 build/benos/trap_c.o
+ .debug_abbrev  0x000000000000045e      0x12a build/benos/uart_c.o
+ .debug_abbrev  0x0000000000000588       0xd4 build/benos/page_alloc_c.o
+ .debug_abbrev  0x000000000000065c      0x1ad build/benos/stacktrace_c.o
+ .debug_abbrev  0x0000000000000809      0x123 build/benos/plic_c.o
+ .debug_abbrev  0x000000000000092c       0xeb build/benos/timer_c.o
+ .debug_abbrev  0x0000000000000a17       0xfb build/benos/memset_c.o
+ .debug_abbrev  0x0000000000000b12      0x21a build/benos/kernel_c.o
+ .debug_abbrev  0x0000000000000d2c       0x14 build/benos/memset_s.o
+ .debug_abbrev  0x0000000000000d40       0x14 build/benos/entry_s.o
+ .debug_abbrev  0x0000000000000d54       0x14 build/benos/boot_s.o
+ .debug_abbrev  0x0000000000000d68       0x14 build/benos/asm_test_s.o
+ .debug_abbrev  0x0000000000000d7c       0x14 build/benos/early_printk_s.o
+ .debug_abbrev  0x0000000000000d90      0x1ac build/lib/printk_c.o
+ .debug_abbrev  0x0000000000000f3c       0xb7 build/lib/string_c.o
+
+.debug_aranges  0x0000000000000000      0x330
+ .debug_aranges
+                0x0000000000000000       0x30 build/benos/mmu_c.o
+ .debug_aranges
+                0x0000000000000030       0x30 build/benos/kallsyms_c.o
+ .debug_aranges
+                0x0000000000000060       0x30 build/benos/trap_c.o
+ .debug_aranges
+                0x0000000000000090       0x30 build/benos/uart_c.o
+ .debug_aranges
+                0x00000000000000c0       0x30 build/benos/page_alloc_c.o
+ .debug_aranges
+                0x00000000000000f0       0x30 build/benos/stacktrace_c.o
+ .debug_aranges
+                0x0000000000000120       0x30 build/benos/plic_c.o
+ .debug_aranges
+                0x0000000000000150       0x30 build/benos/timer_c.o
+ .debug_aranges
+                0x0000000000000180       0x30 build/benos/memset_c.o
+ .debug_aranges
+                0x00000000000001b0       0x30 build/benos/kernel_c.o
+ .debug_aranges
+                0x00000000000001e0       0x30 build/benos/memset_s.o
+ .debug_aranges
+                0x0000000000000210       0x30 build/benos/entry_s.o
+ .debug_aranges
+                0x0000000000000240       0x30 build/benos/boot_s.o
+ .debug_aranges
+                0x0000000000000270       0x30 build/benos/asm_test_s.o
+ .debug_aranges
+                0x00000000000002a0       0x30 build/benos/early_printk_s.o
+ .debug_aranges
+                0x00000000000002d0       0x30 build/lib/printk_c.o
+ .debug_aranges
+                0x0000000000000300       0x30 build/lib/string_c.o
+
+.debug_line     0x0000000000000000     0x30b5
+ .debug_line    0x0000000000000000      0x578 build/benos/mmu_c.o
+ .debug_line    0x0000000000000578      0x368 build/benos/kallsyms_c.o
+ .debug_line    0x00000000000008e0      0x35a build/benos/trap_c.o
+ .debug_line    0x0000000000000c3a      0x2f9 build/benos/uart_c.o
+ .debug_line    0x0000000000000f33      0x13f build/benos/page_alloc_c.o
+ .debug_line    0x0000000000001072      0x1cb build/benos/stacktrace_c.o
+ .debug_line    0x000000000000123d      0x33a build/benos/plic_c.o
+ .debug_line    0x0000000000001577      0x134 build/benos/timer_c.o
+ .debug_line    0x00000000000016ab      0x211 build/benos/memset_c.o
+ .debug_line    0x00000000000018bc      0x69d build/benos/kernel_c.o
+ .debug_line    0x0000000000001f59       0x5d build/benos/memset_s.o
+ .debug_line    0x0000000000001fb6       0xa7 build/benos/entry_s.o
+ .debug_line    0x000000000000205d       0x7f build/benos/boot_s.o
+ .debug_line    0x00000000000020dc      0x275 build/benos/asm_test_s.o
+ .debug_line    0x0000000000002351      0x105 build/benos/early_printk_s.o
+ .debug_line    0x0000000000002456      0xb7c build/lib/printk_c.o
+ .debug_line    0x0000000000002fd2       0xe3 build/lib/string_c.o
+
+.debug_str      0x0000000000000000      0xabc
+ .debug_str     0x0000000000000000      0x2a2 build/benos/mmu_c.o
+                                        0x2de (松开之前的大小)
+ .debug_str     0x00000000000002a2      0x112 build/benos/kallsyms_c.o
+                                        0x224 (松开之前的大小)
+ .debug_str     0x00000000000003b4      0x162 build/benos/trap_c.o
+                                        0x267 (松开之前的大小)
+ .debug_str     0x0000000000000516       0x7b build/benos/uart_c.o
+                                        0x15a (松开之前的大小)
+ .debug_str     0x0000000000000591       0x67 build/benos/page_alloc_c.o
+                                        0x13b (松开之前的大小)
+ .debug_str     0x00000000000005f8       0x72 build/benos/stacktrace_c.o
+                                        0x1b7 (松开之前的大小)
+ .debug_str     0x000000000000066a       0x66 build/benos/plic_c.o
+                                        0x163 (松开之前的大小)
+ .debug_str     0x00000000000006d0       0x61 build/benos/timer_c.o
+                                        0x14c (松开之前的大小)
+ .debug_str     0x0000000000000731       0x5a build/benos/memset_c.o
+                                        0x163 (松开之前的大小)
+ .debug_str     0x000000000000078b      0x1a7 build/benos/kernel_c.o
+                                        0x2fb (松开之前的大小)
+ .debug_str     0x0000000000000932       0x19 build/benos/memset_s.o
+                                         0x5c (松开之前的大小)
+ .debug_str     0x000000000000094b        0xc build/benos/entry_s.o
+                                         0x5b (松开之前的大小)
+ .debug_str     0x0000000000000957        0xb build/benos/boot_s.o
+                                         0x5a (松开之前的大小)
+ .debug_str     0x0000000000000962        0xf build/benos/asm_test_s.o
+                                         0x5e (松开之前的大小)
+ .debug_str     0x0000000000000971       0x13 build/benos/early_printk_s.o
+                                         0x62 (松开之前的大小)
+ .debug_str     0x0000000000000984      0x118 build/lib/printk_c.o
+                                        0x23c (松开之前的大小)
+ .debug_str     0x0000000000000a9c       0x20 build/lib/string_c.o
+                                         0xe4 (松开之前的大小)
+
+.comment        0x0000000000000000       0x29
+ .comment       0x0000000000000000       0x29 build/benos/mmu_c.o
+                                         0x2a (松开之前的大小)
+ .comment       0x0000000000000029       0x2a build/benos/kallsyms_c.o
+ .comment       0x0000000000000029       0x2a build/benos/trap_c.o
+ .comment       0x0000000000000029       0x2a build/benos/uart_c.o
+ .comment       0x0000000000000029       0x2a build/benos/page_alloc_c.o
+ .comment       0x0000000000000029       0x2a build/benos/stacktrace_c.o
+ .comment       0x0000000000000029       0x2a build/benos/plic_c.o
+ .comment       0x0000000000000029       0x2a build/benos/timer_c.o
+ .comment       0x0000000000000029       0x2a build/benos/memset_c.o
+ .comment       0x0000000000000029       0x2a build/benos/kernel_c.o
+ .comment       0x0000000000000029       0x2a build/lib/printk_c.o
+ .comment       0x0000000000000029       0x2a build/lib/string_c.o
+
+.note.GNU-stack
+                0x0000000000000000        0x0
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/mmu_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/kallsyms_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/trap_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/uart_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/page_alloc_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/stacktrace_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/plic_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/timer_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/memset_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/benos/kernel_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/lib/printk_c.o
+ .note.GNU-stack
+                0x0000000000000000        0x0 build/lib/string_c.o
+
+.debug_frame    0x0000000000000000     0x12f8
+ .debug_frame   0x0000000000000000      0x350 build/benos/mmu_c.o
+ .debug_frame   0x0000000000000350      0x108 build/benos/kallsyms_c.o
+ .debug_frame   0x0000000000000458      0x368 build/benos/trap_c.o
+ .debug_frame   0x00000000000007c0      0x160 build/benos/uart_c.o
+ .debug_frame   0x0000000000000920       0xa0 build/benos/page_alloc_c.o
+ .debug_frame   0x00000000000009c0      0x100 build/benos/stacktrace_c.o
+ .debug_frame   0x0000000000000ac0       0xd0 build/benos/plic_c.o
+ .debug_frame   0x0000000000000b90      0x100 build/benos/timer_c.o
+ .debug_frame   0x0000000000000c90       0xd0 build/benos/memset_c.o
+ .debug_frame   0x0000000000000d60      0x428 build/benos/kernel_c.o
+ .debug_frame   0x0000000000001188      0x100 build/lib/printk_c.o
+ .debug_frame   0x0000000000001288       0x70 build/lib/string_c.o

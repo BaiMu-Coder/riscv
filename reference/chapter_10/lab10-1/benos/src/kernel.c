@@ -314,10 +314,16 @@ static void clean_bss(void)
 	memset((void *)start, 0, size);
 }
 
+
+
+//OS入口
 void kernel_main(void)
 {
-	clean_bss();
+	clean_bss();  //把所有“未显式初始化的全局变量/静态变量”清零，满足 C 语言运行时的基本前提
+
 	sbi_put_string("Welcome RISC-V!\r\n");
+
+	
 	init_printk_done(sbi_putchar);
 	printk("printk init done\n");
 
