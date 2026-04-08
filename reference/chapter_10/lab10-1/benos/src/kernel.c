@@ -327,13 +327,13 @@ void kernel_main(void)
 	init_printk_done(sbi_putchar);
 	printk("printk init done\n");
 
-	asm_test();
-	inline_asm_test();
+	// asm_test();
+	// inline_asm_test();
 
-	/* lab5-4：查表*/
-	print_func_name(0x800880);
-	print_func_name(0x800860);
-	print_func_name(0x800800);
+	// /* lab5-4：查表*/
+	// print_func_name(0x800880);
+	// print_func_name(0x800860);
+	// print_func_name(0x800800);
 
 	trap_init();
 

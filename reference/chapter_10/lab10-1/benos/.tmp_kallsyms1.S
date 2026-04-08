@@ -102,43 +102,43 @@ kallsyms_addresses:
 	PTR	_text + 0x2924
 	PTR	_text + 0x2a58
 	PTR	_text + 0x2ac4
-	PTR	_text + 0x2bac
-	PTR	_text + 0x2bb0
-	PTR	_text + 0x2bc4
-	PTR	_text + 0x2c84
-	PTR	_text + 0x2c84
-	PTR	_text + 0x2d14
+	PTR	_text + 0x2b80
+	PTR	_text + 0x2b84
+	PTR	_text + 0x2b98
+	PTR	_text + 0x2c58
+	PTR	_text + 0x2c58
+	PTR	_text + 0x2ce8
+	PTR	_text + 0x2cf4
+	PTR	_text + 0x2d18
 	PTR	_text + 0x2d20
-	PTR	_text + 0x2d48
-	PTR	_text + 0x2d50
-	PTR	_text + 0x2d88
-	PTR	_text + 0x2dd0
+	PTR	_text + 0x2d58
+	PTR	_text + 0x2da0
+	PTR	_text + 0x2de4
+	PTR	_text + 0x2df0
 	PTR	_text + 0x2e14
-	PTR	_text + 0x2e20
+	PTR	_text + 0x2e2c
 	PTR	_text + 0x2e44
 	PTR	_text + 0x2e5c
 	PTR	_text + 0x2e74
-	PTR	_text + 0x2e8c
-	PTR	_text + 0x2ea4
+	PTR	_text + 0x2e90
+	PTR	_text + 0x2ea8
 	PTR	_text + 0x2ec0
+	PTR	_text + 0x2ec8
+	PTR	_text + 0x2ed0
 	PTR	_text + 0x2ed8
-	PTR	_text + 0x2ef0
-	PTR	_text + 0x2ef8
 	PTR	_text + 0x2f00
-	PTR	_text + 0x2f08
 	PTR	_text + 0x2f30
-	PTR	_text + 0x2f60
-	PTR	_text + 0x2fb8
-	PTR	_text + 0x2fb8
-	PTR	_text + 0x2fd8
-	PTR	_text + 0x2fe0
-	PTR	_text + 0x2ffc
-	PTR	_text + 0x30a0
-	PTR	_text + 0x34a0
-	PTR	_text + 0x3c4c
-	PTR	_text + 0x3d04
-	PTR	_text + 0x3e64
-	PTR	_text + 0x3eb8
+	PTR	_text + 0x2f88
+	PTR	_text + 0x2f88
+	PTR	_text + 0x2fa8
+	PTR	_text + 0x2fb0
+	PTR	_text + 0x2fcc
+	PTR	_text + 0x3070
+	PTR	_text + 0x3470
+	PTR	_text + 0x3c1c
+	PTR	_text + 0x3cd4
+	PTR	_text + 0x3e34
+	PTR	_text + 0x3e88
 	PTR	_text + 0x3fc0
 
 .globl kallsyms_num_syms

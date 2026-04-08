@@ -8,7 +8,7 @@
 #include "printk.h"
 #include "asm/clint.h"
 
-extern char idmap_pg_dir[];
+extern char idmap_pg_dir[];  //链接脚本里面定义的，一个4096字节数据段部分
 
 extern char _text_boot[], _etext_boot[];
 extern char _text[], _etext[];
@@ -92,19 +92,20 @@ static void __create_pgd_mapping(pgd_t *pgdir, unsigned long phys,
 		unsigned long (*alloc_pgtable)(void),
 		unsigned long flags)
 {
-	/* 由虚拟地址va和PGD基地址，找到对应PGD表项 */
+	/* 由虚拟地址va和PGD基地址，找到对应PGD叶表项 */
 	pgd_t *pgdp = pgd_offset_raw(pgdir, virt);
 	unsigned long addr, end, next;
 
 	phys &= PAGE_MASK;
 	addr = virt & PAGE_MASK;
-	end = PAGE_ALIGN(virt + size);
+	end = PAGE_ALIGN(virt + size);  //结束地址向上对齐，不足一页的话，一页来映射的 ，   最终的映射：覆盖原始区间的整页范围
 
 	do {
 		/* 找到pgd表项管辖的范围*/
-		next = pgd_addr_end(addr, end);
+		next = pgd_addr_end(addr, end);           //因为一个pgd表项最多映射，1G大小
+
 		alloc_init_pmd(pgdp, addr, next, phys,
-				prot, alloc_pgtable, flags);
+				prot, alloc_pgtable, flags);      //逐层页表构建
 		phys += next - addr;
 	} while (pgdp++, addr = next, addr != end);
 }
@@ -119,9 +120,13 @@ static unsigned long early_pgtable_alloc(void)
 	phys = get_free_page();
 	memset((void *)phys, 0, PAGE_SIZE);
 
-	return phys;
+	return phys; //返回的是这一页的物理地址
 }
 
+
+
+//create_identical_mapping() 的作用，是为早期页表 idmap_pg_dir 建立从内核代码段到剩余物理内存的恒等映射（VA=PA），
+// 从而保证开启 MMU 后，当前内核代码和数据还能按原地址继续执行和访问。
 static void create_identical_mapping(void)
 {
 	unsigned long start;

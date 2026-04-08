@@ -67,7 +67,6 @@ void sbi_main(void)
 
 
 
-	printk("xxxxxxxxxxxxxxxxxxxxxxxxx\n");
 
 	/* 切换到S模式 */
 	asm volatile("mret");

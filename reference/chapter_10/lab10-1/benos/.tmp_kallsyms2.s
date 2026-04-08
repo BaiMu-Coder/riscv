@@ -110,43 +110,43 @@ kallsyms_addresses:
  .quad _text + 0x295c
  .quad _text + 0x2a90
  .quad _text + 0x2afc
- .quad _text + 0x2be4
- .quad _text + 0x2be8
- .quad _text + 0x2bfc
- .quad _text + 0x2cbc
- .quad _text + 0x2cbc
- .quad _text + 0x2d4c
+ .quad _text + 0x2bb8
+ .quad _text + 0x2bbc
+ .quad _text + 0x2bd0
+ .quad _text + 0x2c90
+ .quad _text + 0x2c90
+ .quad _text + 0x2d20
+ .quad _text + 0x2d2c
+ .quad _text + 0x2d50
  .quad _text + 0x2d58
- .quad _text + 0x2d80
- .quad _text + 0x2d88
- .quad _text + 0x2dc0
- .quad _text + 0x2e08
+ .quad _text + 0x2d90
+ .quad _text + 0x2dd8
+ .quad _text + 0x2e1c
+ .quad _text + 0x2e28
  .quad _text + 0x2e4c
- .quad _text + 0x2e58
+ .quad _text + 0x2e64
  .quad _text + 0x2e7c
  .quad _text + 0x2e94
  .quad _text + 0x2eac
- .quad _text + 0x2ec4
- .quad _text + 0x2edc
+ .quad _text + 0x2ec8
+ .quad _text + 0x2ee0
  .quad _text + 0x2ef8
+ .quad _text + 0x2f00
+ .quad _text + 0x2f08
  .quad _text + 0x2f10
- .quad _text + 0x2f28
- .quad _text + 0x2f30
  .quad _text + 0x2f38
- .quad _text + 0x2f40
  .quad _text + 0x2f68
- .quad _text + 0x2f98
- .quad _text + 0x2ff0
- .quad _text + 0x2ff0
- .quad _text + 0x3010
- .quad _text + 0x3018
- .quad _text + 0x3034
- .quad _text + 0x30d8
- .quad _text + 0x34d8
- .quad _text + 0x3c84
- .quad _text + 0x3d3c
- .quad _text + 0x3e9c
- .quad _text + 0x3ef0
+ .quad _text + 0x2fc0
+ .quad _text + 0x2fc0
+ .quad _text + 0x2fe0
+ .quad _text + 0x2fe8
+ .quad _text + 0x3004
+ .quad _text + 0x30a8
+ .quad _text + 0x34a8
+ .quad _text + 0x3c54
+ .quad _text + 0x3d0c
+ .quad _text + 0x3e6c
+ .quad _text + 0x3ec0
  .quad _text + 0x3fc0
 
 .globl kallsyms_num_syms

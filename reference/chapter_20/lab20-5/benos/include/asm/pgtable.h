@@ -40,7 +40,7 @@
 /* 查找PGD索引 */
 #define pgd_index(addr) (((addr) >> PGDIR_SHIFT) & (PTRS_PER_PGD - 1))
 
-/* 通过地址addr查找PGD的表项 */
+/* 通过地址addr查找PGD的叶表项 */
 #define pgd_offset_raw(pgd, addr) ((pgd) + pgd_index(addr))
 
 #define pgd_addr_end(addr, end)						\
